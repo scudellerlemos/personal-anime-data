@@ -3,9 +3,7 @@ import pandas as pd
 from google.cloud import storage
 import os
 
-
-
-# Variaveis
+# Variáveis de Conta de Serviço e Storage
 source_path = '#ACCOUNT SERVICE#' 
 local_file = '#FILE_NAME.csv#'
 bucket_name = '#NIME_BUCKET_GCP#'
@@ -121,7 +119,7 @@ if response.status_code == 200:
 
     # Cria o DataFrame
     df = pd.DataFrame(anime_data)
-    df.columns = df.columns.str.replace(r'[^\w]', '_', regex=True)
+    df.columns = df.columns.str.replace(r'[^\w]', '_', regex=True).str.upper()
 
     # Salva o DataFrame como um arquivo CSV
 
