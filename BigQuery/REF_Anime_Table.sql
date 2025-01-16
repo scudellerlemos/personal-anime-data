@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE `personal-anime-data-2024.REF_DATA.REF_ANIMELIST` AS
+CREATE OR REPLACE TABLE `personal-anime-data-2024.REF_DATA.TB_FATO_ANIMELIST` AS
 WITH NormalizedScores AS (
   SELECT
     -- Colunas de NOME e DSC
