@@ -4,6 +4,6 @@ CREATE OR REPLACE TABLE `personal-anime-data-2024.TRU_DATA.TRU_ANIMELIST` AS
   FROM `personal-anime-data-2024.RAW_DATA.RAW_ANIMELIST`
   -- Filtrar os últimos 3 anos com base no máximo de SEASON_YEAR
   WHERE SEASON_YEAR >= (
-    SELECT MAX(SEASON_YEAR) - 2
+    SELECT MAX(SEASON_YEAR) - 4
     FROM `personal-anime-data-2024.RAW_DATA.RAW_ANIMELIST`
   );
