@@ -135,12 +135,12 @@ if response.status_code == 200:
     # Inicializa o cliente do Google Cloud Storage
     client = storage.Client()
     bucket = client.bucket(bucket_name)
-    blob = bucket.blob(local_file)
+    blob = bucket.blob(local_file)  # Mesma chave de arquivo para habilitar versionamento
 
     # Faz o upload do arquivo para o bucket
     blob.upload_from_filename(temp_path)
 
-    print(f"Arquivo {local_file} enviado para o bucket {bucket_name}.")
+    print(f"Arquivo {local_file} enviado para o bucket {bucket_name}. Versionamento ativo.")
 
 else:
     print(f"Erro na requisição: {response.status_code}")
