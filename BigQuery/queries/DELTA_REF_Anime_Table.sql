@@ -1,18 +1,3 @@
--- Criar a tabela REF_ANIMELIST caso ela não exista
-CREATE TABLE IF NOT EXISTS `personal-anime-data-2024.REF_DATA.TB_FATO_ANIMELIST` AS
-SELECT
-  *
-FROM `personal-anime-data-2024.TRU_DATA.TRU_ANIMELIST`
-WHERE 1 = 0; -- Cria a tabela vazia com o mesmo esquema da RAW_ANIMELIST
-
-
--- Remover registros antigos da tabela TB_FATO_ANIMELIST para manter apenas os últimos 3 anos
-DELETE FROM `personal-anime-data-2024.REF_DATA.TB_FATO_ANIMELIST`
-WHERE DATE_SEASON_YEAR < (
-  SELECT MAX(DATE_SEASON_YEAR) - 2
-  FROM `personal-anime-data-2024.REF_DATA.TB_FATO_ANIMELIST`
-);
-
 -- Inserir novos registros na tabela existente TB_FATO_ANIMELIST
 INSERT INTO `personal-anime-data-2024.REF_DATA.TB_FATO_ANIMELIST` (
   NME_TITLE_ROMAJI,
