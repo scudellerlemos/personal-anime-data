@@ -24,7 +24,7 @@ O projeto implementa um projeto completo de analytics com as seguintes camadas:
 
 ### **4. Orquestração de dados**
 - **Tecnologia**: Cloud Composer
-- **Uso**: Socicita a execução de scripts em SQL, em horario agendado, para garantir atualização de dados no BigQuery.
+- **Uso**: Solicita a execução de scripts em SQL, em horario agendado, para garantir atualização de dados no BigQuery.
 
 #### Esboço da Arquitetura
 ![image](https://github.com/user-attachments/assets/4b669217-d6d2-4b5f-915a-98af0d08e67e)
