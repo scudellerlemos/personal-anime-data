@@ -1,80 +1,88 @@
-Personal Anime Data Project
-Este repositório contém um projeto analítico baseado nos dados do perfil pessoal Gajs no site AniList.co. Ele utiliza uma arquitetura de dados analítica avançada para ingestão, processamento e visualização de dados de animes assistidos.
+# **📊Personal Anime Data Project**
 
-Arquitetura Analítica
-O projeto implementa uma arquitetura de dados Medallion com as seguintes camadas:
+Este repositório apresenta um projeto analítico que utiliza dados do perfil pessoal Gajs no site [AniList.co](https://anilist.co). Ele foi desenvolvido com uma arquitetura de dados robusta para ingestão, processamento e visualização, com o objetivo de analisar os animes assistidos. O projeto também inclui um dashboard interativo, projetado para explorar métricas e insights sobre os hábitos de consumo de animes.
 
-1. Ingestão
-Workflow: A ingestão é gerenciada por um workflow do Databricks.
-Fonte dos Dados: Os dados são coletados diretamente da API do site AniList.co.
-Objetivo: Captura dados brutos do perfil pessoal Gajs e os armazena em uma área de staging no Google Cloud Storage (GCS).
-2. Staging Area
-Tecnologia: Google Cloud Storage (GCS).
-Uso: Armazena os arquivos brutos versionados antes de serem processados e ingeridos no BigQuery.
-Controle: Garante rastreabilidade total com versionamento de objetos ativado.
-3. Dados no BigQuery
-Armazenamento: O pipeline move os dados do GCS para o Google BigQuery, onde eles são organizados em diferentes camadas conforme o modelo Medallion:
-RAW: Dados históricos completos, atuando como staging area do pipeline.
-TRU (Trusted): Dados confiáveis, armazenados por até 5 anos, com controle incremental (delta).
-REF (Refined): Dados refinados e tratados, com retenção de até 3 anos.
-DMT (Data Mart): Contém os indicadores e métricas finais, otimizados para dashboards, com retenção de até 2 anos.
-Detalhes da Arquitetura de Dados Medallion
-RAW:
-Descrição:
-Dados brutos e históricos completos.
-Atua como a camada inicial do pipeline de dados.
-Retenção: Sem limite de retenção.
-Objetivo: Garante rastreabilidade e permite reconstrução do pipeline em caso de necessidade.
-TRU (Trusted):
-Descrição:
-Dados limpos e confiáveis.
-Aplicação de regras de negócios e garantia de consistência.
-Retenção: Até 5 anos.
-Objetivo: Fornecer uma base confiável para análises mais detalhadas.
-REF (Refined):
-Descrição:
-Dados refinados e tratados para consumo específico.
-Estruturados para facilitar análises exploratórias e relatórios.
-Retenção: Até 3 anos.
-Objetivo: Fornecer dados prontos para modelagem de indicadores.
-DMT (Data Mart):
-Descrição:
-Contém métricas e indicadores finais para visualização em dashboards.
-Dados otimizados para consumo direto em ferramentas como Tableau e Looker Studio.
-Retenção: Até 2 anos.
-Objetivo: Melhorar o desempenho e agilidade na geração de insights.
-Fluxo de Dados
-plaintext
-Copiar
-Editar
-          AniList.co API
-                 |
-             Ingestão
-       (Databricks Workflow)
-                 |
-           Staging Area
-           (Google Cloud Storage)
-                 |
-               RAW
-    (Histórico completo e bruto)
-                 |
-               TRU
-     (Dados confiáveis - Até 5 anos)
-                 |
-               REF
-  (Dados refinados e tratados - Até 3 anos)
-                 |
-               DMT
-    (Métricas e Indicadores - Até 2 anos)
-                 |
-           Dashboards
-      (Visualização e Insights)
-Tecnologias Utilizadas
-Ingestão: Databricks Workflow
-Staging Area: Google Cloud Storage (GCS)
-Armazenamento e Processamento: Google BigQuery
-Visualização: Tableau, Looker Studio, ou ferramentas similares
-Objetivos
-Análise de Dados Pessoais: Identificar padrões e insights com base nos animes assistidos.
-Visualização de Indicadores: Construir dashboards que mostram métricas como os gêneros mais assistidos, os animes mais populares e as notas médias.
-Gerenciamento de Dados: Implementar um pipeline confiável e rastreável para ingestão e processamento de dados.
+---
+
+## **🎌Arquitetura Analítica**
+
+O projeto implementa um projeto completo de analytics com as seguintes camadas:
+
+### **1. Ingestão**
+- **Agendamento**: Gerenciada por um workflow no **Databricks**.
+- **Fonte dos Dados**: Coletados diretamente da **API do AniList.co**.
+- **Objetivo**: Captura dados brutos do perfil pessoal **Gajs** e os armazena em uma área de staging no **Google Cloud Storage (GCS)**.
+
+### **2. Staging Area**
+- **Tecnologia**: **Google Cloud Storage (GCS)**.
+- **Uso**: Armazena arquivos brutos versionados antes de serem processados e ingeridos no BigQuery.
+- **Controle**: Garante rastreabilidade total com versionamento de objetos ativado.
+
+### **3. Dados no BigQuery**
+- **Tecnologia**: Bigquery e Cloud Composer
+- **Uso**: Armazena dados em várias camadas, semelhante a arquitetura de dados Medallion.
+
+#### Esboço da Arquitetura
+![image](https://github.com/user-attachments/assets/4b669217-d6d2-4b5f-915a-98af0d08e67e)
+
+
+---
+
+## **🎌Arquitetura de dados**
+
+Esta seção detalha a funcionalidade de cada camada do pipeline de dados. Uma nova camada foi adicionada para separar exclusivamente as tabelas utilizadas em visualizações, como dashboards e painéis, ou para análises específicas.
+
+#### **RAW**
+- **Descrição**: Dados brutos e históricos completos.
+- **Retenção**: Sem limite de retenção.
+- **Objetivo**: Garante rastreabilidade e permite reconstrução do pipeline em caso de necessidade.
+
+#### **TRU (Trusted)**
+- **Descrição**: Dados limpos e confiáveis, com aplicação de regras de negócios e garantia de consistência.
+- **Retenção**: Até 5 anos.
+- **Objetivo**: Fornecer uma base confiável para análises mais detalhadas.
+
+#### **REF (Refined)**
+- **Descrição**: Dados refinados e tratados para consumo específico, estruturados para análises exploratórias e relatórios.
+- **Objetivo**: Fornecer dados prontos para modelagem de indicadores.
+
+#### DMT (Data Mart) 
+- **Descrição**: Métricas e indicadores finais para visualização em dashboards, otimizados para consumo em ferramentas como Tableau ,Looker Studio ou Power BI.
+- **Objetivo**: Melhorar o desempenho e a agilidade na geração de insights.
+
+---
+
+## **🎌Contribuições**
+
+Contribuições são sempre bem-vindas! 
+
+Se você tiver sugestões, melhorias ou ideias para expandir este projeto, sinta-se à vontade para contribuir. Basta seguir os passos abaixo:
+
+1. **Faça um Fork** deste repositório.
+2. Crie uma **branch** para a sua funcionalidade ou correção de bug:
+   ```bash
+   git checkout -b feature-sua-funcionalidade
+3. Realize as alterações necessárias e faça o commit:
+   ```bash
+   git checkout -b feature-sua-funcionalidade
+4. Envie suas alterações para o seu fork:
+   ```bash
+   git push origin feature-sua-funcionalidade
+5. Abra um Pull Request (PR) neste repositório.
+
+
+---
+<div align="center">
+  Fim! 
+Obrigado!
+</div>
+
+---
+
+<div align="center">
+  <img src="https://media1.tenor.com/m/xk1Dypa4ZDkAAAAd/jeonzflwr.gif" alt="Jeonzflwr GIF" width="300" height="300" />
+</div>
+
+
+
+
