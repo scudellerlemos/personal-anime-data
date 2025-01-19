@@ -27,7 +27,9 @@ O projeto implementa um projeto completo de analytics com as seguintes camadas:
 - **Uso**: Solicita a execução de scripts em SQL, em horario agendado, para garantir atualização de dados no BigQuery.
 
 #### Esboço da Arquitetura
-![image](https://github.com/user-attachments/assets/4b669217-d6d2-4b5f-915a-98af0d08e67e)
+![image](https://github.com/user-attachments/assets/0e06b4a4-3f52-43a7-b9c3-a93dcca81690)
+
+
 
 
 ---
