@@ -78,6 +78,14 @@ Se você tiver sugestões, melhorias ou ideias para expandir este projeto, sinta
 
 
 ---
+
+## **🎌Visualização**
+Painel construido em tabela de camada DMT.
+Pode ser visto em [Dashboard](https://public.tableau.com/app/profile/felipe.lemos.scudeller/viz/Minhahistoriacomanimes/VisaoGeral?publish=yes) 
+
+![image](https://github.com/user-attachments/assets/b614528a-29cf-4997-8775-ec08c5dba759)
+
+---
 <div align="center">
   Fim! 
 Obrigado!
