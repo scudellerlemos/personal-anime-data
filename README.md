@@ -2,11 +2,25 @@
 
 Este repositório apresenta um projeto analítico que utiliza dados do perfil pessoal Gajs no site [AniList.co](https://anilist.co). Ele foi desenvolvido com uma arquitetura de dados robusta para ingestão, processamento e visualização, com o objetivo de analisar os animes assistidos. O projeto também inclui um dashboard interativo, projetado para explorar métricas e insights sobre os hábitos de consumo de animes.
 
+
+---
+
+Tecnologias utilizadas:
+
+| Tecnologia   | Descrição                                                                 |
+|--------------|-------------------------------------------------------------------------|
+| ![Python](https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=python&logoColor=white) | Linguagem de programação principal utilizada para automação e processamento de dados. |
+| ![SQL](https://img.shields.io/badge/-SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white) | Utilizado para manipulação e análise de dados no BigQuery. |
+| ![BigQuery](https://img.shields.io/badge/-BigQuery-669DF6?style=for-the-badge&logo=googlecloud&logoColor=white) | Armazenamento e análise escalável de grandes volumes de dados na nuvem Google. |
+| ![Databricks](https://img.shields.io/badge/-Databricks-FF3621?style=for-the-badge&logo=databricks&logoColor=white) | Plataforma de análise unificada para engenharia de dados e machine learning. |
+| ![Google Composer](https://img.shields.io/badge/-Composer-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white) | Orquestração de workflows baseada no Apache Airflow no Google Cloud. |
+| ![Apache Airflow](https://img.shields.io/badge/-Airflow-017CEE?style=for-the-badge&logo=apacheairflow&logoColor=white) | Ferramenta de orquestração de pipelines de dados. |
+
 ---
 
 ## **🎌Arquitetura Analítica**
 
-O projeto implementa um projeto completo de analytics com as seguintes camadas:
+OEsta seção detalha a implementação de um projeto completo de analytics com as seguintes camadas:
 
 ### **1. Ingestão**
 - **Agendamento**: Gerenciada por um workflow no **Databricks**.
