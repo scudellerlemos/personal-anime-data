@@ -58,6 +58,15 @@ Esta seção detalha a funcionalidade de cada camada do pipeline de dados. Uma n
 
 ---
 
+## **🎌Visualização**
+Painel construido em tabela de camada DMT.
+Pode ser visto em [Dashboard](https://public.tableau.com/app/profile/felipe.lemos.scudeller/viz/Minhahistoriacomanimes/VisaoGeral?publish=yes) 
+
+![image](https://github.com/user-attachments/assets/b614528a-29cf-4997-8775-ec08c5dba759)
+
+
+---
+
 ## **🎌Contribuições**
 
 Contribuições são sempre bem-vindas! 
@@ -76,14 +85,6 @@ Se você tiver sugestões, melhorias ou ideias para expandir este projeto, sinta
    git push origin feature-sua-funcionalidade
 5. Abra um Pull Request (PR) neste repositório.
 
-
----
-
-## **🎌Visualização**
-Painel construido em tabela de camada DMT.
-Pode ser visto em [Dashboard](https://public.tableau.com/app/profile/felipe.lemos.scudeller/viz/Minhahistoriacomanimes/VisaoGeral?publish=yes) 
-
-![image](https://github.com/user-attachments/assets/b614528a-29cf-4997-8775-ec08c5dba759)
 
 ---
 <div align="center">
