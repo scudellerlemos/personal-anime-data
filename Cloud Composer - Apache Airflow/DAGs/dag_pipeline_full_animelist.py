@@ -17,6 +17,7 @@ default_args = {
 # URLs das consultas SQL no GitHub
 TRU_QUERY_URL = "https://raw.githubusercontent.com/scudellerlemos/personal-anime-data/main/BigQuery/queries/TRU_Anime_Table.sql"
 REF_QUERY_URL = "https://raw.githubusercontent.com/scudellerlemos/personal-anime-data/main/BigQuery/queries/REF_Anime_Table.sql"
+DMT_QUERY_URL = "https://raw.githubusercontent.com/scudellerlemos/personal-anime-data/main/BigQuery/queries/DMT_Anime_Table.sql"
 
 # Função para buscar o conteúdo SQL do GitHub
 def fetch_sql_from_github(url):
@@ -30,10 +31,12 @@ def fetch_sql_from_github(url):
 def get_queries(**kwargs):
     tru_query = fetch_sql_from_github(TRU_QUERY_URL)
     ref_query = fetch_sql_from_github(REF_QUERY_URL)
+    dmt_query = fetch_sql_from_github(DMT_QUERY_URL)
     
     # Salvando as consultas no contexto da DAG para serem reutilizadas
     kwargs['ti'].xcom_push(key='tru_query', value=tru_query)
     kwargs['ti'].xcom_push(key='ref_query', value=ref_query)
+    kwargs['ti'].xcom_push(key='dmt_query', value=dmt_query)
 
 # Definição da DAG
 with DAG(
@@ -75,5 +78,16 @@ with DAG(
         },
     )
 
+    # Tarefa 4: Executar a consulta DMT_Anime_Table.sql no BigQuery
+    execute_dmt_query_task = BigQueryInsertJobOperator(
+        task_id='execute_dmt_query',
+        configuration={
+            "query": {
+                "query": "{{ ti.xcom_pull(task_ids='fetch_queries', key='dmt_query') }}",
+                "useLegacySql": False,
+            }
+        },
+    )
+
     # Ordem das tarefas
-    fetch_queries_task >> execute_tru_query_task >> execute_ref_query_task
+    fetch_queries_task >> execute_tru_query_task >> execute_ref_query_task >> execute_dmt_query_task
