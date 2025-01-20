@@ -20,7 +20,7 @@ Tecnologias utilizadas:
 
 ## **🎌Arquitetura Analítica**
 
-OEsta seção detalha a implementação de um projeto completo de analytics com as seguintes camadas:
+Esta seção detalha a implementação de um projeto completo de analytics com as seguintes camadas:
 
 ### **1. Ingestão**
 - **Agendamento**: Gerenciada por um workflow no **Databricks**.
